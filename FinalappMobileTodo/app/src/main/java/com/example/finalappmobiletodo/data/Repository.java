@@ -90,6 +90,23 @@ public class Repository {
                 return null;
             }
         }
+        /**
+         *  Updates a word in the database.
+         */
+        private static class updateWordAsyncTask extends AsyncTask<Task, Void, Void> {
+            private TodoDao mAsyncTaskDao;
+
+            updateWordAsyncTask(TodoDao dao) {
+                mAsyncTaskDao = dao;
+            }
+
+            @Override
+            protected Void doInBackground(final Task... params) {
+                mAsyncTaskDao.update(params[0]);
+                return null;
+            }
+        }
+    }
 
     }
 
