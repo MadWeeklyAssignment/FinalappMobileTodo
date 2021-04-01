@@ -141,6 +141,7 @@ public class MainActivity extends AppCompatActivity {
         isFragmentDisplayed = true;
 
     }
+
     public void closeFragment() {
 
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -157,6 +158,7 @@ public class MainActivity extends AppCompatActivity {
         isFragmentDisplayed = false;
 
     }
+
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
@@ -164,4 +166,3 @@ public class MainActivity extends AppCompatActivity {
         savedInstanceState.putBoolean(STATE_FRAGMENT, isFragmentDisplayed);
     }
 
-}
