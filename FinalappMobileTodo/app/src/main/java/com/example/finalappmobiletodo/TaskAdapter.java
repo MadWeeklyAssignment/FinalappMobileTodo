@@ -17,3 +17,19 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.WordViewHolder
     TaskAdapter(Context context) {
         mInflater = LayoutInflater.from(context);
     }
+    @Override
+    public WordViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View itemView = mInflater.inflate(R.layout.recyclerview_item, parent, false);
+        return new WordViewHolder(itemView);
+    }
+
+    @Override
+    public void onBindViewHolder(WordViewHolder holder, int position) {
+        if (mTasks != null) {
+            Task current = mTasks.get(position);
+            holder.wordItemView.setText(current.getWord());
+        } else {
+            // Covers the case of data not being ready yet.
+            holder.wordItemView.setText("");
+        }
+    }
