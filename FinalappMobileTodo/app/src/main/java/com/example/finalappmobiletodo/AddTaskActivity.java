@@ -55,4 +55,10 @@ public class AddTaskActivity extends AppCompatActivity {
                             replyIntent.putExtra(EXTRA_REPLY_ID, id);
                         }
                     }
-                 
+                    setResult(RESULT_OK, replyIntent);
+                }
+                finish();
+            }
+        });
+    }
+}
