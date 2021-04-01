@@ -26,7 +26,11 @@ public interface tododao {
 
     @Query("SELECT * from word_table LIMIT 1")
     task[] getAnyWord();
-    
+
+    @Query("SELECT * from word_table ORDER BY word ASC")
+    LiveData<List<task>> getAllWords();
+
+
 
 
 }
