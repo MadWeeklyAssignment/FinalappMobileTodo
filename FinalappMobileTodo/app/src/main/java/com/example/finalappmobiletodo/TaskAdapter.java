@@ -44,3 +44,21 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.WordViewHolder
             return mTasks.size();
         else return 0;
     }
+    public Task getWordAtPosition(int position) {
+        return mTasks.get(position);
+    }
+
+    class WordViewHolder extends RecyclerView.ViewHolder {
+        private final TextView wordItemView;
+
+        private WordViewHolder(View itemView) {
+            super(itemView);
+            wordItemView = itemView.findViewById(R.id.textView);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    clickListener.onItemClick(view, getAdapterPosition());
+                }
+            });
+        }
+    }
