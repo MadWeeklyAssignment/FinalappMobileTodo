@@ -20,5 +20,7 @@ public interface tododao {
 
     @Query("DELETE FROM word_table")
     void deleteAll();
-    
+    @Delete
+    void deleteWord(task task);
+
 }
