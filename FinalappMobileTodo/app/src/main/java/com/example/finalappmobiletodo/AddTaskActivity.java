@@ -28,4 +28,11 @@ public class AddTaskActivity extends AppCompatActivity {
 
         final Bundle extras = getIntent().getExtras();
 
-       
+        if (extras != null) {
+            String word = extras.getString(EXTRA_DATA_UPDATE_WORD, "");
+            if (!word.isEmpty()) {
+                mEditWordView.setText(word);
+                mEditWordView.setSelection(word.length());
+                mEditWordView.requestFocus();
+            }
+        }
