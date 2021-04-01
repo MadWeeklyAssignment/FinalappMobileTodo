@@ -18,15 +18,24 @@ public class MainViewModel extends AndroidViewModel {
         mRepository = new Repository(application);
         mAllWords = mRepository.getAllWords();
     }
+
     LiveData<List<Task>> getAllWords() {
         return mAllWords;
     }
+
     public void insert(Task task) {
         mRepository.insert(task);
     }
+
     public void deleteAll() {
         mRepository.deleteAll();
     }
+
     public void deleteWord(Task task) {
         mRepository.deleteWord(task);
     }
+
+    public void update(Task task) {
+        mRepository.update(task);
+    }
+}
