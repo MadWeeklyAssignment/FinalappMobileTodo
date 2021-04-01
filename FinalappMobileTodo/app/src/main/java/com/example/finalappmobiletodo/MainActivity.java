@@ -111,7 +111,6 @@ public class MainActivity extends AppCompatActivity {
                 && resultCode == RESULT_OK) {
             String word_data = data.getStringExtra(com.example.finalappmobiletodo.AddTaskActivity.EXTRA_REPLY);
             int id = data.getIntExtra(com.example.finalappmobiletodo.AddTaskActivity.EXTRA_REPLY_ID, -1);
-
             if (id != -1) {
                 mMainViewModel.update(new Task(id, word_data));
             } else {
@@ -121,12 +120,40 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
-
     public void launchUpdateWordActivity(Task task) {
         Intent intent = new Intent(this, com.example.finalappmobiletodo.AddTaskActivity.class);
         intent.putExtra(EXTRA_DATA_UPDATE_WORD, task.getWord());
         intent.putExtra(EXTRA_DATA_ID, task.getId());
         startActivityForResult(intent, UPDATE_WORD_ACTIVITY_REQUEST_CODE);
     }
+    public void displayFragment() {
 
-}
+        RatingFragment simpleFragment = RatingFragment.newInstance();
+
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+
+        fragmentTransaction.add(R.id.fragment_body, simpleFragment).addToBackStack(null).commit();
+
+
+        isFragmentDisplayed = true;
+
+    }
+    public void closeFragment() {
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+
+
+        RatingFragment simpleFragment = (RatingFragment) fragmentManager.findFragmentById(R.id.fragment_body);
+        if (simpleFragment != null) {
+
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.remove(simpleFragment).commit();
+        }
+
+
+        isFragmentDisplayed = false;
+
+    }
