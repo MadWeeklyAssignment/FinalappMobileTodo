@@ -37,3 +37,10 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.WordViewHolder
         mTasks = tasks;
         notifyDataSetChanged();
     }
+
+    @Override
+    public int getItemCount() {
+        if (mTasks != null)
+            return mTasks.size();
+        else return 0;
+    }
