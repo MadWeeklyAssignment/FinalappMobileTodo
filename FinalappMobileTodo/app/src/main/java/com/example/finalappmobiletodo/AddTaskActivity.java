@@ -37,4 +37,22 @@ public class AddTaskActivity extends AppCompatActivity {
             }
         }
         final Button button = findViewById(R.id.button_save);
-    
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                // Create a new Intent for the reply.
+                Intent replyIntent = new Intent();
+                if (TextUtils.isEmpty(mEditWordView.getText())) {
+                    // No word was entered, set the result accordingly.
+                    setResult(RESULT_CANCELED, replyIntent);
+                } else {
+                    // Get the new word that the user entered.
+                    String word = mEditWordView.getText().toString();
+                    // Put the new word in the extras for the reply Intent.
+                    replyIntent.putExtra(EXTRA_REPLY, word);
+                    if (extras != null && extras.containsKey(EXTRA_DATA_ID)) {
+                        int id = extras.getInt(EXTRA_DATA_ID, -1);
+                        if (id != -1) {
+                            replyIntent.putExtra(EXTRA_REPLY_ID, id);
+                        }
+                    }
+                 
