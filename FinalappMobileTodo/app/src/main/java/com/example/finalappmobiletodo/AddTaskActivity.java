@@ -1,4 +1,4 @@
 package com.example.finalappmobiletodo;
 
-public class addtaskactivity {
+public class AddTaskActivity {
 }

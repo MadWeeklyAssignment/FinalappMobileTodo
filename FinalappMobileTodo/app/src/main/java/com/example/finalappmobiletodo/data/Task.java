@@ -11,7 +11,7 @@ import androidx.room.PrimaryKey;
  */
 
 @Entity(tableName = "word_table")
-public class task {
+public class Task {
 
     @PrimaryKey(autoGenerate = true)
     private int id;
@@ -20,7 +20,7 @@ public class task {
     @ColumnInfo(name = "word")
     private String mWord;
 
-    public task(@NonNull String word) {
+    public Task(@NonNull String word) {
         this.mWord = word;
     }
 
@@ -30,7 +30,7 @@ public class task {
      */
 
     @Ignore
-    public task(int id, @NonNull String word) {
+    public Task(int id, @NonNull String word) {
         this.id = id;
         this.mWord = word;
     }
