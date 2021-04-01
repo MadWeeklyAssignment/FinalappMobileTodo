@@ -157,3 +157,11 @@ public class MainActivity extends AppCompatActivity {
         isFragmentDisplayed = false;
 
     }
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+
+        savedInstanceState.putBoolean(STATE_FRAGMENT, isFragmentDisplayed);
+    }
+
+}
