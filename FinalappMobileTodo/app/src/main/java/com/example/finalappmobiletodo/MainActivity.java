@@ -44,3 +44,5 @@ public class MainActivity extends AppCompatActivity {
         final TaskAdapter adapter = new TaskAdapter(this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+// Set up the WordViewModel.
+        mMainViewModel = ViewModelProviders.of(this).get(MainViewModel.class);
