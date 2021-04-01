@@ -26,8 +26,7 @@ public class Repository {
         new insertAsyncTask(mTodoDao).execute(task);
     }
 
-    public void update(Task task)  {
-        new updateWordAsyncTask(mTodoDao).execute(task);
+    public void update(Task task)  { new updateWordAsyncTask(mTodoDao).execute(task);
     }
 
     public void deleteAll()  {
@@ -36,7 +35,7 @@ public class Repository {
 
     // Must run off main thread
     public void deleteWord(Task task) {
-        new deleteWordAsyncTask(mTodoDao).execute(task);
+        new insertAsyncTask.deleteWordAsyncTask(mTodoDao).execute(task);
     }
 
     // Static inner classes below here to run database interactions in the background.

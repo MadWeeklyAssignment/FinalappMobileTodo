@@ -52,4 +52,81 @@ public class MainActivity extends AppCompatActivity {
                 adapter.setWords(tasks);
             }
         });
+        FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                closeFragment();
+                Intent intent = new Intent(MainActivity.this, com.example.finalappmobiletodo.AddTaskActivity.class);
+                startActivityForResult(intent, NEW_WORD_ACTIVITY_REQUEST_CODE);
             }
+        });
+
+
+        ItemTouchHelper helper = new ItemTouchHelper(
+                new ItemTouchHelper.SimpleCallback(0,
+                        ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+                    @Override
+
+                    public boolean onMove(RecyclerView recyclerView,
+                                          RecyclerView.ViewHolder viewHolder,
+                                          RecyclerView.ViewHolder target) {
+                        return false;
+                    }
+
+
+                    @Override
+
+                    public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+                        int position = viewHolder.getAdapterPosition();
+                        Task myTask = adapter.getWordAtPosition(position);
+
+                        mMainViewModel.deleteWord(myTask);
+                    }
+                });
+
+        helper.attachToRecyclerView(recyclerView);
+
+
+        adapter.setOnItemClickListener(new TaskAdapter.ClickListener() {
+
+            @Override
+            public void onItemClick(View v, int position) {
+                Task task = adapter.getWordAtPosition(position);
+                launchUpdateWordActivity(task);
+            }
+        });
+    }
+
+
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == NEW_WORD_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
+            Task task = new Task(data.getStringExtra(com.example.finalappmobiletodo.AddTaskActivity.EXTRA_REPLY));
+
+            mMainViewModel.insert(task);
+        } else if (requestCode == UPDATE_WORD_ACTIVITY_REQUEST_CODE
+                && resultCode == RESULT_OK) {
+            String word_data = data.getStringExtra(com.example.finalappmobiletodo.AddTaskActivity.EXTRA_REPLY);
+            int id = data.getIntExtra(com.example.finalappmobiletodo.AddTaskActivity.EXTRA_REPLY_ID, -1);
+
+            if (id != -1) {
+                mMainViewModel.update(new Task(id, word_data));
+            } else {
+
+            }
+        } else {
+
+        }
+    }
+
+    public void launchUpdateWordActivity(Task task) {
+        Intent intent = new Intent(this, com.example.finalappmobiletodo.AddTaskActivity.class);
+        intent.putExtra(EXTRA_DATA_UPDATE_WORD, task.getWord());
+        intent.putExtra(EXTRA_DATA_ID, task.getId());
+        startActivityForResult(intent, UPDATE_WORD_ACTIVITY_REQUEST_CODE);
+    }
+
+}
