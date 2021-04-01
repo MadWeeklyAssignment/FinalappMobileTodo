@@ -12,5 +12,10 @@ import androidx.fragment.app.FragmentTransaction;
 
 import static com.example.finalappmobiletodo.MainActivity.EXTRA_DATA_ID;
 import static com.example.finalappmobiletodo.MainActivity.EXTRA_DATA_UPDATE_WORD;
-public class AddTaskActivity {
-}
+public class AddTaskActivity extends AppCompatActivity {
+
+    public static final String EXTRA_REPLY = "com.example.android.roomwordssample.REPLY";
+    public static final String EXTRA_REPLY_ID = "com.android.example.roomwordssample.REPLY_ID";
+
+    private EditText mEditWordView;
+    boolean isFragmentDisplayed = false;
