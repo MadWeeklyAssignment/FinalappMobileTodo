@@ -46,3 +46,6 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 // Set up the WordViewModel.
         mMainViewModel = ViewModelProviders.of(this).get(MainViewModel.class);
+        mMainViewModel.getAllWords().observe(this, new Observer<List<Task>>() {
+            @Override
+            public void onChanged(@Nullable final List<Task> tasks) {
