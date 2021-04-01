@@ -20,7 +20,13 @@ public interface tododao {
 
     @Query("DELETE FROM word_table")
     void deleteAll();
+
     @Delete
     void deleteWord(task task);
+
+    @Query("SELECT * from word_table LIMIT 1")
+    task[] getAnyWord();
+    
+
 
 }
