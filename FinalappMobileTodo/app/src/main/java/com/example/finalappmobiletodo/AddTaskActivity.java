@@ -19,3 +19,13 @@ public class AddTaskActivity extends AppCompatActivity {
 
     private EditText mEditWordView;
     boolean isFragmentDisplayed = false;
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_add_task);
+
+        mEditWordView = findViewById(R.id.edit_word);
+        int id = -1 ;
+
+        final Bundle extras = getIntent().getExtras();
+
+       
