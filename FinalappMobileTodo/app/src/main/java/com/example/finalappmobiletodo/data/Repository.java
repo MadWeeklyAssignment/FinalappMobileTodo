@@ -74,5 +74,22 @@ public class Repository {
             }
         }
 
+        /**
+         *  Deletes a single word from the database.
+         */
+        private static class deleteWordAsyncTask extends AsyncTask<Task, Void, Void> {
+            private TodoDao mAsyncTaskDao;
+
+            deleteWordAsyncTask(TodoDao dao) {
+                mAsyncTaskDao = dao;
+            }
+
+            @Override
+            protected Void doInBackground(final Task... params) {
+                mAsyncTaskDao.deleteWord(params[0]);
+                return null;
+            }
+        }
+
     }
 
