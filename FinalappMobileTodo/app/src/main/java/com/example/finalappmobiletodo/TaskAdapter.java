@@ -62,3 +62,12 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.WordViewHolder
             });
         }
     }
+    public void setOnItemClickListener(ClickListener clickListener) {
+        TaskAdapter.clickListener = clickListener;
+    }
+
+    public interface ClickListener {
+        void onItemClick(View v, int position);
+    }
+
+}
