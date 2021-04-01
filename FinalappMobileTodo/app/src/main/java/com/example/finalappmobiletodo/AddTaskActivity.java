@@ -24,7 +24,7 @@ public class AddTaskActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_task);
 
         mEditWordView = findViewById(R.id.edit_word);
-        int id = -1 ;
+        int id = -1;
 
         final Bundle extras = getIntent().getExtras();
 
@@ -36,3 +36,5 @@ public class AddTaskActivity extends AppCompatActivity {
                 mEditWordView.requestFocus();
             }
         }
+        final Button button = findViewById(R.id.button_save);
+    
