@@ -57,5 +57,22 @@ public class Repository {
             mAsyncTaskDao.insert(params[0]);
             return null;
         }
+        /**
+         * Deletes all words from the database (does not delete the table).
+         */
+        private static class deleteAllWordsAsyncTask extends AsyncTask<Void, Void, Void> {
+            private TodoDao mAsyncTaskDao;
+
+            deleteAllWordsAsyncTask(TodoDao dao) {
+                mAsyncTaskDao = dao;
+            }
+
+            @Override
+            protected Void doInBackground(Void... voids) {
+                mAsyncTaskDao.deleteAll();
+                return null;
+            }
+        }
+
     }
 
