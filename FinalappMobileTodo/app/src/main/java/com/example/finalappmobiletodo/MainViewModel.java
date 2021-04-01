@@ -27,3 +27,6 @@ public class MainViewModel extends AndroidViewModel {
     public void deleteAll() {
         mRepository.deleteAll();
     }
+    public void deleteWord(Task task) {
+        mRepository.deleteWord(task);
+    }
