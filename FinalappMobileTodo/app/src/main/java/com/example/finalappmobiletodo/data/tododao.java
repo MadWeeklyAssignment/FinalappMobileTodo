@@ -17,4 +17,8 @@ public interface tododao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insert(task task);
+
+    @Query("DELETE FROM word_table")
+    void deleteAll();
+    
 }
