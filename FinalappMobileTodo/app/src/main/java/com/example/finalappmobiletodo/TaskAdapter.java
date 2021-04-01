@@ -33,3 +33,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.WordViewHolder
             holder.wordItemView.setText("");
         }
     }
+    void setWords(List<Task> tasks) {
+        mTasks = tasks;
+        notifyDataSetChanged();
+    }
