@@ -21,3 +21,6 @@ public class MainViewModel extends AndroidViewModel {
     LiveData<List<Task>> getAllWords() {
         return mAllWords;
     }
+    public void insert(Task task) {
+        mRepository.insert(task);
+    }
