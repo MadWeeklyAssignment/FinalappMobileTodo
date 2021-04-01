@@ -49,3 +49,7 @@ public class MainActivity extends AppCompatActivity {
         mMainViewModel.getAllWords().observe(this, new Observer<List<Task>>() {
             @Override
             public void onChanged(@Nullable final List<Task> tasks) {
+                adapter.setWords(tasks);
+            }
+        });
+            }
