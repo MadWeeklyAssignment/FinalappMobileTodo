@@ -21,20 +21,20 @@
 ## TODO-App Application Workings (CRUD Functions)
 
 - Add Function working
-<img src="Screenshots/addfunctionworking.gif" width=300/>
+<img src="Screenshots/addfunctionworking.gif" >
 
 
 
 - Edit FunctionFunction 
-<img src="Screenshots/editfunctionworking.gif" width=300/>
+<img src="Screenshots/editfunctionworking.gif" >
 
 
 
 - Delete Function 
-<img src="Screenshots/deletesingleworking.gif" width=300/>
+<img src="Screenshots/deletesingleworking.gif" >
 
 
 - Deleteall Function 
-<img src="Screenshots/deleteallworking.gif" width=300/>
+<img src="Screenshots/deleteallworking.gif">
 
 
