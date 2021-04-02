@@ -9,12 +9,12 @@
 <img src="Screenshots/index landscape.png"/>
 
 - Application Add Index 
-<img src="Screenshots/Index-AddPage.png" width=300/>
+<img src="Screenshots/add task view.png" width=300/>
 
 - Application Edit Index 
 <img src="Screenshots/edit task view.png" width=300/>
 
-- Application ClearedList-Fragment Index (Potrait)
+- Application ClearedList-Fragment Index 
 <img src="Screenshots/deleted every task view.png" width=300/>
 
 
