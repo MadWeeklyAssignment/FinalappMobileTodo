@@ -8,7 +8,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/purple_200"
+        android:background="@color/color_sky"
         android:orientation="horizontal">
 
         <TextView
@@ -19,6 +19,7 @@
 
             android:text="@string/rate_item"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
 
 
     </LinearLayout>

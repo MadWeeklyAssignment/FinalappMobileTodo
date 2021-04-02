@@ -1,14 +1,12 @@
 package com.example.finalappmobiletodo.data;
 
+
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
-/**
- * Entity class that represents a word in the database
- */
 
 @Entity(tableName = "word_table")
 public class Task {
@@ -24,10 +22,6 @@ public class Task {
         this.mWord = word;
     }
 
-    /*
-     * This constructor is annotated using @Ignore, because Room expects only
-     * one constructor by default in an entity class.
-     */
 
     @Ignore
     public Task(int id, @NonNull String word) {

@@ -1,4 +1,5 @@
 package com.example.finalappmobiletodo;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,15 +9,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.finalappmobiletodo.data.Task;
 
 import java.util.List;
+
+
+
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.WordViewHolder> {
 
     private final LayoutInflater mInflater;
-    private List<Task> mTasks; // Cached copy of words
+    private List<Task> mTasks;
     private static ClickListener clickListener;
 
     TaskAdapter(Context context) {
         mInflater = LayoutInflater.from(context);
     }
+
     @Override
     public WordViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = mInflater.inflate(R.layout.recyclerview_item, parent, false);
@@ -29,14 +34,17 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.WordViewHolder
             Task current = mTasks.get(position);
             holder.wordItemView.setText(current.getWord());
         } else {
-            // Covers the case of data not being ready yet.
+
             holder.wordItemView.setText("");
         }
     }
+
+
     void setWords(List<Task> tasks) {
         mTasks = tasks;
         notifyDataSetChanged();
     }
+
 
     @Override
     public int getItemCount() {
@@ -44,6 +52,8 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.WordViewHolder
             return mTasks.size();
         else return 0;
     }
+
+
     public Task getWordAtPosition(int position) {
         return mTasks.get(position);
     }
@@ -62,6 +72,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.WordViewHolder
             });
         }
     }
+
     public void setOnItemClickListener(ClickListener clickListener) {
         TaskAdapter.clickListener = clickListener;
     }

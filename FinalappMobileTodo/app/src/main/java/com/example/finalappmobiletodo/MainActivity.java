@@ -2,10 +2,10 @@ package com.example.finalappmobiletodo;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
@@ -15,11 +15,13 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.finalappmobiletodo.data.Repository;
 import com.example.finalappmobiletodo.data.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,36 +30,52 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String EXTRA_DATA_UPDATE_WORD = "extra_word_to_be_updated";
     public static final String EXTRA_DATA_ID = "extra_data_id";
-
+    static final String STATE_FRAGMENT = "state_of_fragment";
     private MainViewModel mMainViewModel;
     private boolean isFragmentDisplayed = false;
-    static final String STATE_FRAGMENT = "state_of_fragment";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
         if (savedInstanceState != null) {
             isFragmentDisplayed = savedInstanceState.getBoolean(STATE_FRAGMENT);
         }
-        // Set up the RecyclerView.
+
+
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
         final TaskAdapter adapter = new TaskAdapter(this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-// Set up the WordViewModel.
+
         mMainViewModel = ViewModelProviders.of(this).get(MainViewModel.class);
+
         mMainViewModel.getAllWords().observe(this, new Observer<List<Task>>() {
             @Override
             public void onChanged(@Nullable final List<Task> tasks) {
+
                 adapter.setWords(tasks);
             }
         });
+
+        Button deleteAll = findViewById(R.id.delAll);
+        deleteAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Repository(getApplication()).deleteAll();
+                displayFragment();
+            }
+        });
+
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 closeFragment();
-                Intent intent = new Intent(MainActivity.this, com.example.finalappmobiletodo.AddTaskActivity.class);
+                Intent intent = new Intent(MainActivity.this, AddTaskActivity.class);
+                //Intent intent = new Intent(MainActivity.this, com.example.finalappmobiletodo.AddTaskActivity.class);
                 startActivityForResult(intent, NEW_WORD_ACTIVITY_REQUEST_CODE);
             }
         });
@@ -99,7 +117,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
@@ -111,6 +128,7 @@ public class MainActivity extends AppCompatActivity {
                 && resultCode == RESULT_OK) {
             String word_data = data.getStringExtra(com.example.finalappmobiletodo.AddTaskActivity.EXTRA_REPLY);
             int id = data.getIntExtra(com.example.finalappmobiletodo.AddTaskActivity.EXTRA_REPLY_ID, -1);
+
             if (id != -1) {
                 mMainViewModel.update(new Task(id, word_data));
             } else {
@@ -120,12 +138,15 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
+
     public void launchUpdateWordActivity(Task task) {
         Intent intent = new Intent(this, com.example.finalappmobiletodo.AddTaskActivity.class);
         intent.putExtra(EXTRA_DATA_UPDATE_WORD, task.getWord());
         intent.putExtra(EXTRA_DATA_ID, task.getId());
         startActivityForResult(intent, UPDATE_WORD_ACTIVITY_REQUEST_CODE);
     }
+
+
     public void displayFragment() {
 
         RatingFragment simpleFragment = RatingFragment.newInstance();
@@ -166,3 +187,4 @@ public class MainActivity extends AppCompatActivity {
         savedInstanceState.putBoolean(STATE_FRAGMENT, isFragmentDisplayed);
     }
 
+}
