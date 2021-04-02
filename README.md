@@ -3,28 +3,20 @@
 ## TODO-App  Overview
 
 - Application Main Index (Potrait)
-<img src="Screenshot/Index-Main.png" width=300/>
+<img src="Screenshots/index potrait.png" width=300/>
 
 - Application Main Index (Landscape)
-<img src="Screenshot/IndexLand-Main.png"/>
+<img src="Screenshots/index landscape.png"/>
 
-- Application Add Index (Potrait)
-<img src="Screenshot/Index-AddPage.png" width=300/>
+- Application Add Index 
+<img src="Screenshots/Index-AddPage.png" width=300/>
 
-- Application Add Index (Landscape)
-<img src="Screenshot/IndexLand-AddPage.png"/>
-
-- Application Edit Index (Potrait)
-<img src="Screenshot/Index-EditPage.png" width=300/>
-
-- Application Edit Index (Landscape)
-<img src="Screenshot/IndexLand-EditPage.png"/>
+- Application Edit Index 
+<img src="Screenshots/edit task view.png" width=300/>
 
 - Application ClearedList-Fragment Index (Potrait)
-<img src="Screenshot/Index-Fragment.png" width=300/>
+<img src="Screenshots/deleted every task view.png" width=300/>
 
-- Application ClearedList-Fragment Index (Landscape)
-<img src="Screenshot/IndexLand-Fragment.png"/>
 
 ## TODO-App Application Workings (CRUD Functions)
 
